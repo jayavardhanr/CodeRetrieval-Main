@@ -1,19 +1,18 @@
-# Deep Code Search
 Main Code for Code Retrieval Model
 
-## Repository Structures
+### Repository Structures
 
  - `/code`: All code for model training and evaluation
  - `/data`: Directory for data and model checkpoints
  
-## Code Strcuture
+### Code Strcuture
  - `codesearcher.py`: The main for Code Retrieval Model: 
  - `config.py`: Configurations for models defined in the `models.py`. 
    Each function defines the hyper-parameters for the corresponding model.
- - `data.py`: A PyTorch dataset loader.
+ - `data.py`: dataset loader.
  - `utils.py`: Utilities for models and training. 
  
-## Usage
+### Usage
   The `/data` folder provides all the datasets
   
   1) Main staQC dataset
@@ -26,8 +25,8 @@ Main Code for Code Retrieval Model
   ### Configuration
   1. Edit hyper-parameters and settings in `config.py`
   
- ## Model Using QB( Best Model)
- ## Dont run training without changing parameters, it will override saved best models
+ ### Model Using QB( Best Model)
+ ### Dont run training without changing parameters, it will override saved best models
  
   ### Train
    ```bash
@@ -40,7 +39,7 @@ Main Code for Code Retrieval Model
    python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 1024
    ```
    
-## Model without QB
+### Model without QB
 
   ### Train
   ```bash

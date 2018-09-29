@@ -27,7 +27,8 @@ Main Code for Code Retrieval Model
   
  ### Model Using QB( Best Model)
  ```diff
- - Dont run training without changing parameters, it will override saved best models
+ - Don't run training without changing parameters, it will override saved best models
+ - The parameters provided load the best model for evaluation.
  ```
  
  #### Both 512 and 256 batchsizes produced similar results. I have placed both the weights in the data directory.

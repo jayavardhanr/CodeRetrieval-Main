@@ -25,15 +25,18 @@ Main Code for Code Retrieval Model
   ### Configuration
   1. Edit hyper-parameters and settings in `config.py`
   
- ### Model Using QB( Best Model)
- ```diff
+   ```diff
  - Don't run training without changing parameters, it will override saved best models
  - The parameters provided load the best model for evaluation.
  ```
  
- #### Both 512 and 256 batchsizes produced similar results. I have placed both the weights in the data directory.
+ ### Model Using QB (Best Model parameters)
  
-  ### Train
+  ```diff
+ + Both 512 and 256 batchsizes produced similar results. I have placed both the weights in the data directory.
+ ```
+
+### Train
    ```bash
    python codesearcher.py --mode train --use_qb 1 --code_enc bilstm --reload -1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
    ```
@@ -42,7 +45,7 @@ Main Code for Code Retrieval Model
     python codesearcher.py --mode train --use_qb 1 --code_enc bilstm --reload -1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 512
    ```
    
-   ### Evaluation
+### Evaluation
    
    ```bash
    python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
@@ -52,9 +55,7 @@ Main Code for Code Retrieval Model
    python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 512
    ```
    
-   
-   
-### Model without QB
+### Model without QB (Best Model parameters)
 
   ### Train
   ```bash

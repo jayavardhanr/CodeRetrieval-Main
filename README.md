@@ -26,29 +26,44 @@ Main Code for Code Retrieval Model
   1. Edit hyper-parameters and settings in `config.py`
   
  ### Model Using QB( Best Model)
- ### Dont run training without changing parameters, it will override saved best models
+ ```diff
+ - Dont run training without changing parameters, it will override saved best models
+ ```
+ 
+ #### Both 512 and 256 batchsizes produced similar results. I have placed both the weights in the data directory.
  
   ### Train
    ```bash
-   python codesearcher.py --mode train --use_qb 1 --code_enc bilstm --reload -1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 1024
+   python codesearcher.py --mode train --use_qb 1 --code_enc bilstm --reload -1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
+   ```
+   
+   ```bash
+    python codesearcher.py --mode train --use_qb 1 --code_enc bilstm --reload -1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 512
    ```
    
    ### Evaluation
    
    ```bash
-   python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 1024
+   python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
    ```
+   
+   ```bash
+   python codesearcher.py --mode eval --use_qb 1 --code_enc bilstm --reload 1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 512
+   ```
+   
+   
    
 ### Model without QB
 
   ### Train
   ```bash
-  python codesearcher.py --mode train --use_qb 0 --code_enc bilstm --reload -1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
+  python codesearcher.py --mode train --use_qb 0 --code_enc bilstm --reload -1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 1024
+  ```
 
   ### Evaluation
   
   ```bash
-  python codesearcher.py --mode eval --use_qb 0 --code_enc bilstm --reload 1 --dropout 0.25 --emb_size 200 --lstm_dims 400 --batch_size 256
+  python codesearcher.py --mode eval --use_qb 0 --code_enc bilstm --reload 1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 2014
   ```
 
 

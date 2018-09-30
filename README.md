@@ -21,6 +21,9 @@ Main Code for Code Retrieval Model
   4) staQC dataset to check generalization to Code Annotation (anno)
   5) staQC sanity check dataset (sanity check - code empty, QB empty)
   
+  To test on specific dataset, make changes in the `Config` file.
+  For Codenn dataset, comment `eval` and uncomment `eval_codenn` in `codesearch` python file
+  
   To train and test our model:
   ### Configuration
   1. Edit hyper-parameters and settings in `config.py`
@@ -65,7 +68,7 @@ Main Code for Code Retrieval Model
   ### Evaluation
   
   ```bash
-  python codesearcher.py --mode eval --use_qb 0 --code_enc bilstm --reload 1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 2014
+  python codesearcher.py --mode eval --use_qb 0 --code_enc bilstm --reload 1 --dropout 0.35 --emb_size 200 --lstm_dims 400 --batch_size 1024
   ```
 
 

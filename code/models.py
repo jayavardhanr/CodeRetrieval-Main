@@ -164,7 +164,7 @@ class JointEmbederQB(nn.Module):
         return qt_repr
 
     def combine_qt_and_code(self, qt_repr, code_repr):
-        combined_repr = self.fuse(qt_repr + code_repr)
+        combined_repr = self.fuse(torch.cat((qt_repr, code_repr), 1))
         similarity_score = self.output_activation(self.final_layer(combined_repr))
         return similarity_score
 

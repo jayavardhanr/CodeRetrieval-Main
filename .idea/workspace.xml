@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="92f90184-06a9-42ee-aa43-c727d3104ef6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/code/codesearcher.py" afterPath="$PROJECT_DIR$/code/codesearcher.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="165" column="54" lean-forward="true" selection-start-line="165" selection-start-column="54" selection-end-line="165" selection-end-column="54" />
+            <state relative-caret-position="266">
+              <caret line="166" column="47" lean-forward="false" selection-start-line="166" selection-start-column="47" selection-end-line="166" selection-end-column="47" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -25,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="codesearcher.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="codesearcher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-335">
-              <caret line="152" column="31" lean-forward="true" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+            <state relative-caret-position="325">
+              <caret line="184" column="33" lean-forward="false" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -73,9 +74,9 @@
         <option value="$PROJECT_DIR$/test_code/CodeRetrievalCritic.py" />
         <option value="$PROJECT_DIR$/main_code/codesearcher.py" />
         <option value="$PROJECT_DIR$/main_code/configs.py" />
-        <option value="$PROJECT_DIR$/code/codesearcher.py" />
         <option value="$PROJECT_DIR$/code/configs.py" />
         <option value="$PROJECT_DIR$/code/models.py" />
+        <option value="$PROJECT_DIR$/code/codesearcher.py" />
       </list>
     </option>
   </component>
@@ -300,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538610392871</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Model Changed for Sigmoid Similarity Measure 3">
+      <created>1538610414251</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1538610414251</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -333,7 +341,8 @@
     <MESSAGE value="Name change to qb" />
     <MESSAGE value="Model Changed for Sigmoid Similarity Measure" />
     <MESSAGE value="Model Changed for Sigmoid Similarity Measure 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Model Changed for Sigmoid Similarity Measure 2" />
+    <MESSAGE value="Model Changed for Sigmoid Similarity Measure 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Model Changed for Sigmoid Similarity Measure 3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -366,22 +375,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
+    <entry file="file://$PROJECT_DIR$/code/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-335">
-          <caret line="152" column="31" lean-forward="true" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+        <state relative-caret-position="266">
+          <caret line="166" column="47" lean-forward="false" selection-start-line="166" selection-start-column="47" selection-end-line="166" selection-end-column="47" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/models.py">
+    <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="165" column="54" lean-forward="true" selection-start-line="165" selection-start-column="54" selection-end-line="165" selection-end-column="54" />
+        <state relative-caret-position="325">
+          <caret line="184" column="33" lean-forward="false" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>

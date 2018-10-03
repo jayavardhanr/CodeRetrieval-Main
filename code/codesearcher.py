@@ -132,7 +132,10 @@ class CodeSearcher:
             qt = gVar(qts[0].expand(poolsize, -1))
             qt_repr = model.qt_encoding(qt)
 
-            sims = F.cosine_similarity(code_repr, qt_repr).data.cpu().numpy()
+            sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
+            # sims = F.cosine_similarity(code_repr, qt_repr).data.cpu().numpy()
+            # n_results = K
+
             negsims = np.negative(sims)
             predict = np.argsort(negsims)
             # predict = np.argpartition(negsims, kth=n_results-1)
@@ -180,8 +183,11 @@ class CodeSearcher:
             for i in range(poolsize):
                 qt = gVar(qts[i].expand(poolsize, -1))
                 qt_repr = model.qt_encoding(qt)
+
+                sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
+                # sims = F.cosine_similarity(torch.concat(qt_repr,code_repr)).data.cpu().numpy()
                 # n_results = K
-                sims = F.cosine_similarity(code_repr, qt_repr).data.cpu().numpy()
+
                 negsims = np.negative(sims)
                 predict = np.argsort(negsims)
                 # predict = np.argpartition(negsims, kth=n_results-1)

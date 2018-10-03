@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from utils import gVar
 from configs import get_config
 from data import CodeSearchDataset, CodennDataset
-from models import JointEmbeder
+from models import JointEmbeder, JointEmbederQB
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -342,7 +342,7 @@ if __name__ == '__main__':
         # Define model ######
         #####################
         logger.info('Building Model')
-        model = JointEmbeder(conf)  # Initialize the model
+        model = JointEmbederQB(conf)  # Initialize the model
 
         if conf['reload'] > 0:
             if args.mode == 'eval':

@@ -103,7 +103,7 @@ def get_config():
         'init_embed_weights_code': None,  # 'word2vec_100_code.h5',
         'init_embed_weights_qb': None,  # 'word2vec_100_qb.h5',
         'margin': 0.05,
-        'sim_measure': 'cos',  # similarity measure: gesd, cosine, aesd
+        'sim_measure': 'sigmoid',  # similarity measure: gesd, cosine, aesd
         'use_qb': 1,
         'code_encoder': 'bilstm'  # bow, bilstm
 

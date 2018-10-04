@@ -138,8 +138,7 @@ class CodeSearcher:
             qt = gVar(qts[0].expand(poolsize, -1))
             qt_repr = model.qt_encoding(qt)
 
-            sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr)
-
+            sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr).data.cpu().numpy()
             # sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
             # sims = F.cosine_similarity(code_repr, qt_repr).data.cpu().numpy()
             # n_results = K
@@ -197,7 +196,7 @@ class CodeSearcher:
                 qt = gVar(qts[i].expand(poolsize, -1))
                 qt_repr = model.qt_encoding(qt)
 
-                sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr)
+                sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr).data.cpu().numpy()
                 # sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
                 # sims = F.cosine_similarity(torch.concat(qt_repr,code_repr)).data.cpu().numpy()
                 # n_results = K

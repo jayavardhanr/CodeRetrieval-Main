@@ -163,7 +163,7 @@ class JointEmbederQB2(nn.Module):
         return qt_repr
 
     def score_qt_code_qb(self, qt_repr, code_repr, qb_repr=None):
-        if qb_repr:
+        if self.conf['use_qb']:
             similarity_score = (F.cosine_similarity(qt_repr, code_repr) + F.cosine_similarity(qt_repr,
                                                                                               qb_repr)) * 1.0 / 2
         else:

@@ -123,7 +123,6 @@ class JointEmbederQB2(nn.Module):
         self.conf = config
         self.margin = config['margin']
         self.qt_encoder = SeqEncoder(config['qt_n_words'], config['emb_size'], config['lstm_dims'], self.conf)
-
         if self.conf['use_qb']:
             self.qb_encoder = SeqEncoder(config['qb_n_words'], config['emb_size'], config['lstm_dims'], self.conf)
 
@@ -143,15 +142,15 @@ class JointEmbederQB2(nn.Module):
         code_repr = self.code_encoder(code)
         return code_repr
 
-    def qb_encoding(self, code):
+    def qb_encoding(self, qb):
         '''
         :param code: processed code
         :param qb: processed qb
         :return: vector representation for code
         Encoded Code representation using both code annotation + code
         '''
-        code_repr = self.code_encoder(code)
-        return code_repr
+        qb_repr = self.qb_encoder(qb)
+        return qb_repr
 
     def qt_encoding(self, qt):
         '''
@@ -177,12 +176,12 @@ class JointEmbederQB2(nn.Module):
             good_qb_repr = self.qb_encoding(good_qb)
         else:
             good_qb_repr = None
-        bad_code_repr = self.code_encoding(bad_code)
 
+        bad_code_repr = self.code_encoding(bad_code)
         if self.conf['use_qb']:
             bad_qb_repr = self.qb_encoding(bad_qb)
         else:
-            good_qb_repr = None
+            bad_qb_repr = None
 
         qt_repr = self.qt_encoding(qt)
 

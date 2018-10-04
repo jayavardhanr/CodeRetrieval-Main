@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="92f90184-06a9-42ee-aa43-c727d3104ef6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/code/codesearcher.py" afterPath="$PROJECT_DIR$/code/codesearcher.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,8 +38,8 @@
       <file leaf-file-name="codesearcher.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1547">
-              <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+            <state relative-caret-position="718">
+              <caret line="349" column="36" lean-forward="true" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -357,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538617571614</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Model Changed to cosine average">
+      <created>1538617858849</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1538617858849</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -448,8 +454,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1547">
-          <caret line="198" column="0" lean-forward="true" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+        <state relative-caret-position="718">
+          <caret line="349" column="36" lean-forward="true" selection-start-line="349" selection-start-column="36" selection-end-line="349" selection-end-column="36" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

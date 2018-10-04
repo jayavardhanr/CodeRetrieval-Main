@@ -131,14 +131,15 @@ class JointEmbederQB(nn.Module):
             self.code_encoder = SeqEncoder(config['code_n_words'], config['emb_size'], config['lstm_dims'],
                                            self.conf)  # Bi-LSTM
             # Fusing QT, Code and QB together
-            self.fuse = nn.Linear(2 * config['lstm_dims'] + 4 * config['lstm_dims'], 2 * config['lstm_dims'])
+            self.fuse = nn.Linear(2 * config['lstm_dims'] + 4 * config['lstm_dims'], config['lstm_dims'])
         else:
             self.code_encoder = SeqEncoder(config['code_n_words'], config['emb_size'], config['lstm_dims'],
                                            self.conf)  # Bi-LSTM
             # Fusing QT, Code together
-            self.fuse = nn.Linear(2 * config['lstm_dims'] + 2 * config['lstm_dims'], 2 * config['lstm_dims'])
+            self.fuse = nn.Linear(2 * config['lstm_dims'] + 2 * config['lstm_dims'], config['lstm_dims'])
 
-        self.final_layer = nn.Linear(2 * config['lstm_dims'], 1)  # FF Layer
+        self.ff_layer_1 = nn.Linear(2 * config['lstm_dims'], config['lstm_dims']//8)
+        self.ff_layer_2 = nn.Linear(config['lstm_dims']//8, 1)  # FF Layer
         self.output_activation = nn.Sigmoid()  # Using Sigmoid activation as similarity measure
 
     def code_encoding(self, code, qb):
@@ -166,7 +167,9 @@ class JointEmbederQB(nn.Module):
 
     def combine_qt_and_code(self, qt_repr, code_repr):
         combined_repr = self.fuse(torch.cat((qt_repr, code_repr), 1))
-        similarity_score = self.output_activation(self.final_layer(combined_repr))
+        ff_layer_1_output = self.ff_layer_1(combined_repr)
+        ff_layer_2_output = self.ff_layer_2(ff_layer_1_output)
+        similarity_score = self.output_activation(ff_layer_2_output)
         print(similarity_score.data.cpu().numpy())
         return similarity_score
 

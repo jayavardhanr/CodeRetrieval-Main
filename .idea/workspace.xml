@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="92f90184-06a9-42ee-aa43-c727d3104ef6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/code/codesearcher.py" afterPath="$PROJECT_DIR$/code/codesearcher.py" />
+      <change beforePath="$PROJECT_DIR$/code/configs.py" afterPath="$PROJECT_DIR$/code/configs.py" />
       <change beforePath="$PROJECT_DIR$/code/models.py" afterPath="$PROJECT_DIR$/code/models.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +19,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/code/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="140" column="78" lean-forward="false" selection-start-line="140" selection-start-column="78" selection-end-line="140" selection-end-column="78" />
+            <state relative-caret-position="110">
+              <caret line="155" column="24" lean-forward="true" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -26,11 +28,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="configs.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code/configs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="94" column="22" lean-forward="true" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="codesearcher.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+            <state relative-caret-position="441">
+              <caret line="205" column="45" lean-forward="true" selection-start-line="205" selection-start-column="45" selection-end-line="205" selection-end-column="45" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -65,8 +77,8 @@
         <option value="$PROJECT_DIR$/main_code/codesearcher.py" />
         <option value="$PROJECT_DIR$/main_code/configs.py" />
         <option value="$PROJECT_DIR$/code/configs.py" />
-        <option value="$PROJECT_DIR$/code/codesearcher.py" />
         <option value="$PROJECT_DIR$/code/models.py" />
+        <option value="$PROJECT_DIR$/code/codesearcher.py" />
       </list>
     </option>
   </component>
@@ -319,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538613837693</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Model added 2 FF Layers">
+      <created>1538613939946</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1538613939946</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -381,28 +400,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/code/configs.py">
+    <entry file="file://$PROJECT_DIR$/code/data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
+        <state relative-caret-position="-332">
+          <caret line="127" column="28" lean-forward="true" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code/codesearcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="114" column="19" lean-forward="false" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
+        <state relative-caret-position="441">
+          <caret line="205" column="45" lean-forward="true" selection-start-line="205" selection-start-column="45" selection-end-line="205" selection-end-column="45" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/code/configs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="94" column="22" lean-forward="true" selection-start-line="94" selection-start-column="22" selection-end-line="94" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/code/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="140" column="78" lean-forward="false" selection-start-line="140" selection-start-column="78" selection-end-line="140" selection-end-column="78" />
+        <state relative-caret-position="110">
+          <caret line="155" column="24" lean-forward="true" selection-start-line="155" selection-start-column="24" selection-end-line="155" selection-end-column="24" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
           </folding>

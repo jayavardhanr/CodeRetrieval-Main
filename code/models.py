@@ -117,6 +117,82 @@ class JointEmbeder(nn.Module):
         return loss
 
 
+class JointEmbederQB2(nn.Module):
+    def __init__(self, config):
+        super(JointEmbederQB2, self).__init__()
+        self.conf = config
+        self.margin = config['margin']
+        self.qt_encoder = SeqEncoder(config['qt_n_words'], config['emb_size'], config['lstm_dims'], self.conf)
+
+        if self.conf['use_qb']:
+            self.qb_encoder = SeqEncoder(config['qb_n_words'], config['emb_size'], config['lstm_dims'], self.conf)
+
+            self.code_encoder = SeqEncoder(config['code_n_words'], config['emb_size'], config['lstm_dims'],
+                                           self.conf)  # Bi-LSTM
+        else:
+            self.code_encoder = SeqEncoder(config['code_n_words'], config['emb_size'], config['lstm_dims'],
+                                           self.conf)  # Bi-LSTM
+
+    def code_encoding(self, code):
+        '''
+        :param code: processed code
+        :param qb: processed qb
+        :return: vector representation for code
+        Encoded Code representation using both code annotation + code
+        '''
+        code_repr = self.code_encoder(code)
+        return code_repr
+
+    def qb_encoding(self, code):
+        '''
+        :param code: processed code
+        :param qb: processed qb
+        :return: vector representation for code
+        Encoded Code representation using both code annotation + code
+        '''
+        code_repr = self.code_encoder(code)
+        return code_repr
+
+    def qt_encoding(self, qt):
+        '''
+        Encodes Question title
+        :param qt: processed question title
+        :return: vector representation for qt
+        Encoded Question Title
+        '''
+        qt_repr = self.qt_encoder(qt)
+        return qt_repr
+
+    def score_qt_code_qb(self, qt_repr, code_repr, qb_repr=None):
+        if qb_repr:
+            similarity_score = (F.cosine_similarity(qt_repr, code_repr) + F.cosine_similarity(qt_repr,
+                                                                                              qb_repr)) * 1.0 / 2
+        else:
+            similarity_score = F.cosine_similarity(qt_repr, code_repr)
+        return similarity_score
+
+    def forward(self, qt, good_code, bad_code, good_qb, bad_qb):
+        good_code_repr = self.code_encoding(good_code)
+        if self.conf['use_qb']:
+            good_qb_repr = self.qb_encoding(good_qb)
+        else:
+            good_qb_repr = None
+        bad_code_repr = self.code_encoding(bad_code)
+
+        if self.conf['use_qb']:
+            bad_qb_repr = self.qb_encoding(bad_qb)
+        else:
+            good_qb_repr = None
+
+        qt_repr = self.qt_encoding(qt)
+
+        good_sim = self.score_qt_code_qb(qt_repr, good_code_repr, good_qb_repr)
+        bad_sim = self.score_qt_code_qb(qt_repr, bad_code_repr, bad_qb_repr)
+
+        loss = (self.margin - good_sim + bad_sim).clamp(min=1e-6).mean()
+        return loss
+
+
 class JointEmbederQB(nn.Module):
     def __init__(self, config):
         super(JointEmbederQB, self).__init__()
@@ -138,8 +214,8 @@ class JointEmbederQB(nn.Module):
             # Fusing QT, Code together
             self.fuse = nn.Linear(2 * config['lstm_dims'] + 2 * config['lstm_dims'], config['lstm_dims'])
 
-        self.ff_layer_1 = nn.Linear(config['lstm_dims'], config['lstm_dims']//8)
-        self.ff_layer_2 = nn.Linear(config['lstm_dims']//8, 1)  # FF Layer
+        self.ff_layer_1 = nn.Linear(config['lstm_dims'], config['lstm_dims'] // 8)
+        self.ff_layer_2 = nn.Linear(config['lstm_dims'] // 8, 1)  # FF Layer
         self.output_activation = nn.Sigmoid()  # Using Sigmoid activation as similarity measure
 
     def code_encoding(self, code, qb):

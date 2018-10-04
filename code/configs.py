@@ -81,13 +81,13 @@ def get_config():
         'vocab_qb': 'sql.qb.vocab.pkl',
 
         # training_params
-        'batch_size': 1024,
+        'batch_size': 256,
         'nb_epoch': 500,
         'optimizer': 'adam',
         'lr': 0.001,
         'valid_every': 1,
         'n_eval': 100,
-        'log_every': 1000,
+        'log_every': 100,
         'save_every': 10,
         'patience': 20,
         'reload': 1,  # reload>0, model is reloaded. If reload<=0, then train from scratch

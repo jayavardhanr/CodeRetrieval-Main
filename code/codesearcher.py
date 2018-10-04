@@ -12,7 +12,7 @@ import torch.nn.functional as F
 from utils import gVar
 from configs import get_config
 from data import CodeSearchDataset, CodennDataset
-from models import JointEmbeder, JointEmbederQB
+from models import JointEmbeder, JointEmbederQB, JointEmbederQB2
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(message)s")
@@ -128,11 +128,19 @@ class CodeSearcher:
         accs, mrrs, maps, ndcgs = [], [], [], []
         for qts, codes, qbs in data_loader:
             qts, codes, qbs = gVar(qts), gVar(codes), gVar(qbs)
-            code_repr = model.code_encoding(codes, qbs)
+            code_repr = model.code_encoding(codes)
+
+            if self.conf['use_qb']:
+                qb_repr = model.qb_encoding(qbs)
+            else:
+                qb_repr = None
+
             qt = gVar(qts[0].expand(poolsize, -1))
             qt_repr = model.qt_encoding(qt)
 
-            sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
+            sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr)
+
+            # sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
             # sims = F.cosine_similarity(code_repr, qt_repr).data.cpu().numpy()
             # n_results = K
 
@@ -180,11 +188,17 @@ class CodeSearcher:
         for qts, codes, _, qbs, _ in data_loader:
             qts, codes, qbs = gVar(qts), gVar(codes), gVar(qbs)
             code_repr = model.code_encoding(codes, qbs)
+            if self.conf['use_qb']:
+                qb_repr = model.qb_encoding(qbs)
+            else:
+                qb_repr = None
+
             for i in range(poolsize):
                 qt = gVar(qts[i].expand(poolsize, -1))
                 qt_repr = model.qt_encoding(qt)
 
-                sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
+                sims = model.score_qt_code_qb(qt_repr, code_repr, qb_repr)
+                # sims = model.combine_qt_and_code(qt_repr, code_repr).data.cpu().numpy()
                 # sims = F.cosine_similarity(torch.concat(qt_repr,code_repr)).data.cpu().numpy()
                 # n_results = K
 
@@ -201,6 +215,7 @@ class CodeSearcher:
         logger.info(
             'ACC={}, MRR={}, MAP={}, nDCG={}'.format(np.mean(accs), np.mean(mrrs), np.mean(maps), np.mean(ndcgs)))
         return np.mean(accs), np.mean(mrrs), np.mean(maps), np.mean(ndcgs)
+
 
 ########################
 # Metric Calculations ##
@@ -348,7 +363,7 @@ if __name__ == '__main__':
         # Define model ######
         #####################
         logger.info('Building Model')
-        model = JointEmbederQB(conf)  # Initialize the model
+        model = JointEmbederQB2(conf)  # Initialize the model
 
         if conf['reload'] > 0:
             if args.mode == 'eval':

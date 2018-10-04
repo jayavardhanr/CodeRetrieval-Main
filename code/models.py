@@ -151,6 +151,7 @@ class JointEmbederQB(nn.Module):
         code_repr = self.code_encoder(code)
         qb_repr = self.qb_encoder(qb)
         code_qb_repr = torch.cat((code_repr, qb_repr), 1)
+        code_qb_repr = F.tanh(code_qb_repr)
         return code_qb_repr
 
     def qt_encoding(self, qt):
@@ -166,6 +167,7 @@ class JointEmbederQB(nn.Module):
     def combine_qt_and_code(self, qt_repr, code_repr):
         combined_repr = self.fuse(torch.cat((qt_repr, code_repr), 1))
         similarity_score = self.output_activation(self.final_layer(combined_repr))
+        print(similarity_score.data.cpu().numpy())
         return similarity_score
 
     def forward(self, qt, good_code, bad_code, good_qb, bad_qb):

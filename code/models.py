@@ -138,7 +138,7 @@ class JointEmbederQB(nn.Module):
             # Fusing QT, Code together
             self.fuse = nn.Linear(2 * config['lstm_dims'] + 2 * config['lstm_dims'], config['lstm_dims'])
 
-        self.ff_layer_1 = nn.Linear(2 * config['lstm_dims'], config['lstm_dims']//8)
+        self.ff_layer_1 = nn.Linear(config['lstm_dims'], config['lstm_dims']//8)
         self.ff_layer_2 = nn.Linear(config['lstm_dims']//8, 1)  # FF Layer
         self.output_activation = nn.Sigmoid()  # Using Sigmoid activation as similarity measure
 

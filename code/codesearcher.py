@@ -187,7 +187,7 @@ class CodeSearcher:
         accs, mrrs, maps, ndcgs = [], [], [], []
         for qts, codes, _, qbs, _ in data_loader:
             qts, codes, qbs = gVar(qts), gVar(codes), gVar(qbs)
-            code_repr = model.code_encoding(codes, qbs)
+            code_repr = model.code_encoding(codes)
             if self.conf['use_qb']:
                 qb_repr = model.qb_encoding(qbs)
             else:
